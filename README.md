@@ -1,0 +1,1 @@
+Projeto de demonstração técnica baseado em Spring Boot e OpenJDK 13 com banco em PostgreSQL 11.
