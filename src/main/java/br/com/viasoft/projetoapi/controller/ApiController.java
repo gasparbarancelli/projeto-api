@@ -14,10 +14,13 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @EnableScheduling
@@ -26,7 +29,7 @@ public class ApiController {
     @Autowired
     HistoricoRepository repository;
 
-    @RequestMapping(value = "/obter", method = RequestMethod.GET,
+    @RequestMapping(value = "/atual", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public List<Historico> getDisponibilidade() throws IOException {
@@ -65,13 +68,28 @@ public class ApiController {
         return listaHistorico;
     }
 
-    @RequestMapping(value = "/estado", method = RequestMethod.GET,
+    @RequestMapping(value = "/atual/estado", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public List<Historico> getDisponibilidadePorEstado(@RequestParam("autorizador") String autorizador) throws IOException {
+    public Historico getDisponibilidadePorEstado(@RequestParam("autorizador") String autorizador) throws IOException {
 
         List<Historico> listaHistorico = new ArrayList<Historico>();
-        listaHistorico = repository.findByAutorizadorEquals(autorizador);
+        listaHistorico = getDisponibilidade();
+
+        return listaHistorico.stream().filter( historico -> historico.getAutorizador().equals(autorizador) )
+                .findFirst().orElse(null);
+    }
+
+    @RequestMapping(value = "/historico/data", method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<Historico> getDisponibilidadePorData(@RequestParam Map<String, String> params) throws IOException {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDateTime dataInicio = LocalDate.parse(params.get("inicio"), dtf).atStartOfDay();
+        LocalDateTime dataFim = LocalDate.parse(params.get("fim"), dtf).atTime(23, 59, 59);
+
+        List<Historico> listaHistorico = new ArrayList<Historico>();
+        listaHistorico = repository.findByHoraBetween(dataInicio, dataFim);
 
         return listaHistorico;
     }
