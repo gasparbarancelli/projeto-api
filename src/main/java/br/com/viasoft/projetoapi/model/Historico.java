@@ -135,12 +135,12 @@ public class Historico {
         return "ID: " + this.id +
                 "\nAutorizador: " + this.autorizador +
                 "\nAutorização: " + this.autorizacao +
-                "\nRetorno_autorizacao: " + this.retornoAutorizacao +
+                "\nRetornoAutorizacao: " + this.retornoAutorizacao +
                 "\nInutilizacao: " + this.inutilizacao +
-                "\nConsulta_protocolo: " + this.consultaProtocolo +
-                "\nStatus_servico: " + this.statusServico +
-                "\nConsulta_cadastro: " + this.consultaCadastro +
-                "\nRecepcao_evento: " + this.recepcaoEvento +
+                "\nConsultaProtocolo: " + this.consultaProtocolo +
+                "\nStatusServico: " + this.statusServico +
+                "\nConsultaCadastro: " + this.consultaCadastro +
+                "\nRecepcaoEvento: " + this.recepcaoEvento +
                 "\nHora: " + this.hora;
     }
 }
