@@ -1,6 +1,7 @@
 package br.com.viasoft.projetoapi.controller;
 
 import br.com.viasoft.projetoapi.model.Historico;
+import br.com.viasoft.projetoapi.model.RespostaString;
 import br.com.viasoft.projetoapi.model.Status;
 import br.com.viasoft.projetoapi.repository.HistoricoRepository;
 import org.jsoup.Jsoup;
@@ -92,6 +93,15 @@ public class ApiController {
         listaHistorico = repository.findByHoraBetween(dataInicio, dataFim);
 
         return listaHistorico;
+    }
+
+    @RequestMapping(value = "/offline", method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public RespostaString teste() throws IOException {
+        RespostaString rs = new RespostaString();
+        rs.setResponse( repository.findMostOffline() );
+        return rs;
     }
 
     // Scheduler executará o comando a cada 5 minutos, apenas em minutos múltiplos de 5
