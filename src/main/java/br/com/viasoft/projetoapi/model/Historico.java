@@ -43,90 +43,94 @@ public class Historico {
     @Column(nullable = false)
     private LocalDateTime hora;
 
-    public Historico(String autorizador, Status autorizacao, Status retornoAutorizacao, Status inutilizacao, Status consultaProtocolo, Status statusServico, Status consultaCadastro, Status recepcaoEvento) {
-        this.autorizador = autorizador;
-        this.autorizacao = autorizacao;
-        this.retornoAutorizacao = retornoAutorizacao;
-        this.inutilizacao = inutilizacao;
-        this.consultaProtocolo = consultaProtocolo;
-        this.statusServico = statusServico;
-        this.consultaCadastro = consultaCadastro;
-        this.recepcaoEvento = recepcaoEvento;
+    public long getId() {
+        return id;
     }
 
-    public Historico() {
+    public Historico setId(long id) {
+        this.id = id;
+        return this;
     }
 
     public String getAutorizador() {
         return autorizador;
     }
 
-    public void setAutorizador(String autorizador) {
+    public Historico setAutorizador(String autorizador) {
         this.autorizador = autorizador;
+        return this;
     }
 
     public Status getAutorizacao() {
         return autorizacao;
     }
 
-    public void setAutorizacao(Status autorizacao) {
+    public Historico setAutorizacao(Status autorizacao) {
         this.autorizacao = autorizacao;
+        return this;
     }
 
     public Status getRetornoAutorizacao() {
         return retornoAutorizacao;
     }
 
-    public void setRetornoAutorizacao(Status retorno_autorizacao) {
-        this.retornoAutorizacao = retorno_autorizacao;
+    public Historico setRetornoAutorizacao(Status retornoAutorizacao) {
+        this.retornoAutorizacao = retornoAutorizacao;
+        return this;
     }
 
     public Status getInutilizacao() {
         return inutilizacao;
     }
 
-    public void setInutilizacao(Status inutilizacao) {
+    public Historico setInutilizacao(Status inutilizacao) {
         this.inutilizacao = inutilizacao;
+        return this;
     }
 
     public Status getConsultaProtocolo() {
         return consultaProtocolo;
     }
 
-    public void setConsultaProtocolo(Status consulta_protocolo) {
-        this.consultaProtocolo = consulta_protocolo;
+    public Historico setConsultaProtocolo(Status consultaProtocolo) {
+        this.consultaProtocolo = consultaProtocolo;
+        return this;
     }
 
     public Status getStatusServico() {
         return statusServico;
     }
 
-    public void setStatusServico(Status status_servico) {
-        this.statusServico = status_servico;
+    public Historico setStatusServico(Status statusServico) {
+        this.statusServico = statusServico;
+        return this;
     }
 
     public Status getConsultaCadastro() {
         return consultaCadastro;
     }
 
-    public void setConsultaCadastro(Status consulta_cadastro) {
-        this.consultaCadastro = consulta_cadastro;
+    public Historico setConsultaCadastro(Status consultaCadastro) {
+        this.consultaCadastro = consultaCadastro;
+        return this;
     }
 
     public Status getRecepcaoEvento() {
         return recepcaoEvento;
     }
 
-    public void setRecepcaoEvento(Status recepcao_evento) {
-        this.recepcaoEvento = recepcao_evento;
+    public Historico setRecepcaoEvento(Status recepcaoEvento) {
+        this.recepcaoEvento = recepcaoEvento;
+        return this;
     }
 
     public LocalDateTime getHora() {
         return hora;
     }
 
-    public void setHora(LocalDateTime hora) {
+    public Historico setHora(LocalDateTime hora) {
         this.hora = hora;
+        return this;
     }
 
     @Override

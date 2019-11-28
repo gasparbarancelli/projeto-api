@@ -1,20 +1,11 @@
 package br.com.viasoft.projetoapi.model;
 
 public enum Status {
-    OFFLINE(0),
-    ONLINE(1),
-    INSTAVEL(2),
-    FALTANTE(3);
 
-    private int numero;
-
-    Status(int numero) {
-        this.numero = numero;
-    }
-
-    public int getNumero() {
-        return this.numero;
-    }
+    OFFLINE,
+    ONLINE,
+    INSTAVEL,
+    FALTANTE;
 
     public static Status fromIcone(String nomeIcone) {
         switch (nomeIcone) {
